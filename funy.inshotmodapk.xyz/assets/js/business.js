@@ -56,22 +56,22 @@ async function getGamesListApi(params) {
 let getGamesListCategory=[
   "IO",
   "2 Player",
-  "3D",
-  "Adventure", 
-  "Arcade",
-  "Bejeweled",
-  "Boys",
-  "Clicker",
-  "Cooking",
-  "Girls",
-  "Hypercasual",
-  "Multiplayer",
-  "Puzzle",
-  "Racing",
-  "Shooting",
-  "Soccer",
-  "Sports",
-  "Stickman",
-  "Baby Hazel"
+  "3D"
+  // "Adventure", 
+  // "Arcade",
+  // "Bejeweled",
+  // "Boys"
+  // "Clicker",
+  // "Cooking",
+  // "Girls",
+  // "Hypercasual",
+  // "Multiplayer",
+  // "Puzzle",
+  // "Racing",
+  // "Shooting",
+  // "Soccer",
+  // "Sports",
+  // "Stickman",
+  // "Baby Hazel"
 ]
 export { getGamesList, getGamesListApi,getGamesListCategory };

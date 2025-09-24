@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>INS - GAMES</title>
     <link rel="icon" href="logo.png" />
     <link rel="stylesheet" href="prod-css/index.css">
@@ -123,7 +123,7 @@
                 </div>
             </section>
 
-            <section class="Adventure font2">
+            <!-- <section class="Adventure font2">
                 <h2>
                     <div class="left"><img src="./assets/4 copy.png" alt="">Adventure</div>
 
@@ -131,9 +131,9 @@
                 </h2>
                 <div class="AdventureGameGridBox">
                 </div>
-            </section>
+            </section> -->
 
-            <section class="Boys font2">
+            <!-- <section class="Boys font2">
                 <h2>
                     <div class="left"><img src="./assets/5 copy.png" alt="">Boys</div>
 
@@ -141,11 +141,7 @@
                 </h2>
                 <div class="BoysGameGridBox">
                 </div>
-            </section>
-
-
-
-
+            </section> -->
         </main>
 
         <div class="site-info-area font1">
@@ -334,8 +330,6 @@
     document.querySelector('.indexPage').classList.toggle('loadingAnimation', false)
     // 关闭首评加载动画的时机
 
-
-
     let threeDGameList = await getGamesListApi({ num: 12, category: 3 });
     threeDGameList.forEach((item) => {
         const threeDGameItem = document.createElement('div');
@@ -349,43 +343,36 @@
         document.querySelector('.threeDGameGridBox').appendChild(threeDGameItem);
     })
 
+    // let AdventureGameList = await getGamesListApi({ num: 12, category: 4 });
+    // AdventureGameList.forEach((item) => {
+    //     const AdventureGameItem = document.createElement('div');
+    //     AdventureGameItem.className = 'game-item';
+    //     AdventureGameItem.innerHTML = `
+    //         <a href="play.html?title=${item.title}">
+    //             <img src="${item.thumb}" alt="">
+    //             <div class="title font4">${item.title}</div>
+    //         </a>
+    //         `;
 
 
+    //     document.querySelector('.AdventureGameGridBox').appendChild(AdventureGameItem);
+    // })
 
 
+    // let BoysGameGridList = await getGamesListApi({ num: 12, category: 7 });
+    // BoysGameGridList.forEach((item) => {
+    //     const AdventureGameItem = document.createElement('div');
+    //     AdventureGameItem.className = 'game-item';
+    //     AdventureGameItem.innerHTML = `
+    //         <a href="play.html?title=${item.title}">
+    //             <img src="${item.thumb}" alt="">
+    //             <div class="title font4">${item.title}</div>
+    //         </a>
+    //         `;
 
 
-
-    let AdventureGameList = await getGamesListApi({ num: 12, category: 4 });
-    AdventureGameList.forEach((item) => {
-        const AdventureGameItem = document.createElement('div');
-        AdventureGameItem.className = 'game-item';
-        AdventureGameItem.innerHTML = `
-            <a href="play.html?title=${item.title}">
-                <img src="${item.thumb}" alt="">
-                <div class="title font4">${item.title}</div>
-            </a>
-            `;
-
-
-        document.querySelector('.AdventureGameGridBox').appendChild(AdventureGameItem);
-    })
-
-
-    let BoysGameGridList = await getGamesListApi({ num: 12, category: 7 });
-    BoysGameGridList.forEach((item) => {
-        const AdventureGameItem = document.createElement('div');
-        AdventureGameItem.className = 'game-item';
-        AdventureGameItem.innerHTML = `
-            <a href="play.html?title=${item.title}">
-                <img src="${item.thumb}" alt="">
-                <div class="title font4">${item.title}</div>
-            </a>
-            `;
-
-
-        document.querySelector('.BoysGameGridBox').appendChild(AdventureGameItem);
-    })
+    //     document.querySelector('.BoysGameGridBox').appendChild(AdventureGameItem);
+    // })
 
     import("./assets/js/business.js").then((res) => {
         let menuFloatContent = document.querySelector('.menuFloatContent')
