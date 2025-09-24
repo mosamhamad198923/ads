@@ -36,19 +36,18 @@
                         <div class="font08 gameMsgNum"></div>
                     </div>
                 </div>
-                        
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3585186215296886"
-                    crossorigin="anonymous"></script>
+                <div id="ad-slot-1" style="min-height:280px"></div>
                 <!-- msm.inshotmodapk_display_01 -->
+                <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3585186215296886"
+                    crossorigin="anonymous"></script> -->
+<!-- 
                 <ins class="adsbygoogle"
                     style="display:block"
                     data-ad-client="ca-pub-3585186215296886"
                     data-ad-slot="1292459463"
                     data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+                    data-full-width-responsive="true"></ins> -->
+
 
                 <div class="playButton font3" onclick="gotoPlayGame()">
                     <img src="./assets/kaishi.png" alt="">
@@ -113,10 +112,79 @@
             </a>`
     })
 
-
+     (adsbygoogle = window.adsbygoogle || []).push({});
+    
     window.gotoPlayGame = function () {
         window.location.href = gamedata.url;
     }
+
+
+
+    (function () {
+  const ADS_CLIENT = 'ca-pub-3585186215296886';  // 你的 data-ad-client
+  const ADS_SCRIPT_SRC =
+    'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' +
+    encodeURIComponent(ADS_CLIENT);
+
+  // 仅加载一次 AdSense 脚本
+  function loadAdSense() {
+    return new Promise((resolve, reject) => {
+      if (window.adsbygoogle && window.adsbygoogle.push) return resolve();
+
+      // 如果已有同源脚本在加载，等待即可
+      const existed = document.querySelector('script[data-adsbygoogle-loaded="1"]');
+      if (existed) {
+        const wait = () => (window.adsbygoogle ? resolve() : setTimeout(wait, 50));
+        return wait();
+      }
+
+      const s = document.createElement('script');
+      s.async = true;
+      s.crossOrigin = 'anonymous';
+      s.src = ADS_SCRIPT_SRC;
+      s.setAttribute('data-adsbygoogle-loaded', '1');
+      s.onload = () => resolve();
+      s.onerror = (e) => reject(e);
+      document.head.appendChild(s);
+    });
+  }
+
+  // 渲染一个广告位
+  function doRenderAd(containerEl, adSlot, options = {}) {
+    if (!containerEl) return;
+
+    // 每次渲染前清空，避免重复 push 到同一个 <ins>
+    containerEl.innerHTML = '';
+
+    const ins = document.createElement('ins');
+    ins.className = 'adsbygoogle';
+    ins.style.display = 'block';
+    ins.setAttribute('data-ad-client', ADS_CLIENT);
+    ins.setAttribute('data-ad-slot', adSlot); // 你的 data-ad-slot
+    ins.setAttribute('data-ad-format', options.format || 'auto');
+    ins.setAttribute('data-full-width-responsive', String(options.fullWidth ?? true));
+
+    containerEl.appendChild(ins);
+
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (err) {
+      // 如果用户开了拦截器，这里可能静默失败；仅做告警即可
+      console.warn('adsbygoogle push failed:', err);
+    }
+  }
+
+  // 对外暴露的渲染函数：renderAd('#selector', '1292459463', { format:'auto', fullWidth:true })
+  window.renderAd = function (selector, adSlot, options) {
+    loadAdSense()
+      .then(() => doRenderAd(document.querySelector(selector), adSlot, options))
+      .catch((e) => console.error('AdSense script load error:', e));
+  };
+
+  // 页面就绪后渲染第一个广告位
+  // 对应你给的配置：data-ad-slot="1292459463"
+  window.renderAd('#ad-slot-1', '1292459463', { format: 'auto', fullWidth: true });
+})();
 
 </script>
 
